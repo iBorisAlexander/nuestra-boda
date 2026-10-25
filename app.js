@@ -47,19 +47,21 @@ function abrirInvitacion() {
   // 1) El sello desaparece y la solapa gira hacia atrás.
   // 2) Luego la tarjeta sale desde el bolsillo del sobre.
   sobre.classList.add('abriendo');
+  portada.classList.add('abriendo');
 
   // 3) Dejamos la tarjeta visible un instante antes de entrar a la invitación.
   setTimeout(() => {
     portada.classList.add('saliendo');
-  }, 2050);
+  }, 2100);
 
   // 4) Se retira la portada y queda la invitación completa, sin recargar.
   setTimeout(() => {
     portada.classList.add('oculta');
+    document.body.classList.add('lista');
     document.body.classList.remove('sin-scroll');
     window.scrollTo({ top: 0, behavior: 'auto' });
     actualizarEstadoMusica();
-  }, 2820);
+  }, 2500);
 }
 
 sobre.addEventListener('click', abrirInvitacion);
@@ -94,8 +96,12 @@ document.querySelector('.barra-audio')?.addEventListener('click', (evento) => {
   musica.currentTime = musica.duration * proporcion;
 });
 
-// Contador: 23 de abril de 2027, 00:00 en Chile continental.
-const fechaBoda = new Date('2027-04-23T00:00:00-04:00').getTime();
+// Hora de la ceremonia (formato 24 h, hora de Chile continental).
+// Cámbiala solo aquí: actualiza el texto de la página y el contador.
+const HORA_CEREMONIA = '00:00';
+const fechaBoda = new Date(`2027-04-23T${HORA_CEREMONIA}:00-04:00`).getTime();
+const horaEl = document.getElementById('horaCeremonia');
+if (horaEl) horaEl.textContent = HORA_CEREMONIA;
 
 const diasEl = document.getElementById('dias');
 const horasEl = document.getElementById('horas');
@@ -141,11 +147,3 @@ const observador = new IntersectionObserver((entradas) => {
 document.querySelectorAll('.revelar').forEach((elemento) => observador.observe(elemento));
 
 actualizarEstadoMusica();
-
-
-// Mientras no agregues el enlace del formulario de fotos,
-// evita que el botón provisional mande al inicio de la página.
-const botonAlbum = document.getElementById('botonAlbum');
-if (botonAlbum && botonAlbum.getAttribute('href') === '#') {
-  botonAlbum.addEventListener('click', (evento) => evento.preventDefault());
-}
