@@ -335,7 +335,6 @@ body.lista .hero > :nth-child(4) { animation-delay: .42s; }
 
 /* CEREMONIA Y UBICACIÓN */
 .ceremonia {
-  padding: 90px 20px 100px;
   border-top: 1px solid rgba(111,23,37,.14);
 }
 .ceremonia h2,
@@ -560,12 +559,17 @@ body:not(.sin-scroll) .musica-flotante {
    ========================================================= */
 .album {
   text-align: center;
+  padding-top: 18px;
 }
 
 .texto-seccion {
   width: min(680px, 88%);
-  margin: 14px auto 0;
+  margin: 18px auto 0;
   line-height: 1.8;
+}
+
+.album .boton-accion {
+  margin: 23px;
 }
 
 .boton-accion {

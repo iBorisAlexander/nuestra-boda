@@ -99,7 +99,7 @@ document.querySelector('.barra-audio')?.addEventListener('click', (evento) => {
 // Hora de la ceremonia (formato 24 h, hora de Chile continental).
 // Cámbiala solo aquí: actualiza el texto de la página y el contador.
 const HORA_CEREMONIA = '00:00';
-const fechaBoda = new Date(`2027-04-23T${HORA_CEREMONIA}:00-04:00`).getTime();
+const fechaBoda = new Date(`2027-04-24T${HORA_CEREMONIA}:00-04:00`).getTime();
 const horaEl = document.getElementById('horaCeremonia');
 if (horaEl) horaEl.textContent = HORA_CEREMONIA;
 
